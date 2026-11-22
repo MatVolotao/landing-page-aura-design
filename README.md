@@ -1,43 +1,50 @@
-# Studio Aura — landing page conceitual
+# Studio Aura
 
-Refatoração do exercício de landing page do Studio Aura, baseada no material fornecido durante a imersão. O objetivo foi preservar a atmosfera de luxo discreto, melhorar a apresentação dos projetos e organizar a implementação para manutenção e futura publicação no GitHub Pages.
+Landing page de um estúdio de arquitetura de interiores em São Paulo. A apresentação combina vídeo, fotografia e tipografia editorial para mostrar o portfólio e explicar o processo de trabalho do estúdio.
 
-## Como executar
+**[Acessar o site publicado](https://matvolotao.github.io/landing-page-aura-design/)**
 
-1. Abra `index.html` no navegador. Não há instalação de dependências nem etapa de compilação.
-2. Para desenvolvimento, prefira abrir a pasta num editor e usar uma extensão como **Live Server** (ou `python -m http.server 8000` no terminal e `http://localhost:8000`).
-3. Os vídeos e imagens estão em `assets/`. As fontes são carregadas do Google Fonts e as animações da seção de processo usam GSAP/ScrollTrigger via CDN. Sem GSAP ou com movimento reduzido, a seção apresenta cartões estáticos.
+[![Página inicial do Studio Aura com a chamada Interiores que respiram luxo silencioso sobre uma sala em tons escuros](docs/studio-aura-preview.jpg)](https://matvolotao.github.io/landing-page-aura-design/)
 
-## Organização
+## Experiência do site
 
-```text
-aura-design/
-├── index.html          # Semântica, conteúdo e estrutura da página
-├── css/
-│   └── styles.css      # Design system, componentes e responsividade
-├── js/
-│   └── main.js         # Navegação, revelações, formulário e animações
-├── assets/             # Fotos/vídeos da aula e retrato conceitual gerado
-├── email-marina.txt    # Briefing e prompt da aula: referência histórica
-└── README.md
+- **Portfólio editorial.** Uma grade assimétrica apresenta seis ambientes. Cada fotografia abre em uma visualização ampliada com uma breve descrição e navegação entre os projetos. [Explorar o portfólio](https://matvolotao.github.io/landing-page-aura-design/#portfolio)
+- **Processo de trabalho.** O avanço do vídeo acompanha a rolagem e revela as três etapas do projeto, da leitura do espaço à entrega. [Conhecer o processo](https://matvolotao.github.io/landing-page-aura-design/#processo)
+- **Contato.** O formulário de orçamento demonstra a validação dos campos e apresenta o resultado no próprio navegador. [Testar o formulário](https://matvolotao.github.io/landing-page-aura-design/#contato)
+
+## Decisões de implementação
+
+| Decisão | Aplicação |
+| --- | --- |
+| **Estrutura estática** | HTML semântico, CSS e JavaScript nativo. A página é publicada a partir dos arquivos estáticos e roda localmente sem compilação. |
+| **Layout e identidade visual** | CSS Grid organiza a galeria em diferentes larguras. Variáveis CSS centralizam cores, tipografia e espaçamentos. |
+| **Galeria acessível pelo teclado** | O elemento nativo `<dialog>` mantém a navegação dentro da visualização ampliada. As setas alternam as fotos, `Esc` fecha a galeria e o foco volta à foto de origem. |
+| **Animação com alternativa estática** | GSAP e ScrollTrigger sincronizam a apresentação do processo com a rolagem. Quando a biblioteca está indisponível ou o navegador indica preferência por movimento reduzido, as três etapas aparecem como cartões. |
+
+## Executar localmente
+
+Clone o repositório e abra `index.html` no navegador.
+
+```bash
+git clone https://github.com/MatVolotao/landing-page-aura-design.git
+cd landing-page-aura-design
 ```
 
-## Decisões desta versão
+Para servir o projeto por HTTP, execute `python -m http.server 8000` na raiz com o Python instalado e acesse `http://localhost:8000`. O site carrega as fontes e as bibliotecas de animação via CDN.
 
-- **HTML, CSS e JavaScript nativos:** são suficientes para esta landing page. React e TypeScript não trariam benefício claro nesta etapa.
-- **Portfólio editorial:** a grade assimétrica apresenta os seis projetos. Clique ou pressione Enter sobre uma foto para ampliá-la e ver a legenda. Use as setas para navegar e Esc para fechar.
-- **História de marca completa:** o conteúdo da página é uma narrativa publicitária **fictícia** para o exercício. Evitamos números de registro, premiações e contatos particulares sem origem. Os depoimentos são exemplos narrativos, não relatos verificados.
-- **Retrato conceitual:** gerado por IA para representar a personagem fictícia Marina Vasconcelos; não é uma fotografia da suposta cliente. Imagem em `assets/marina-retrato-conceitual.png`.
-- **Contato e rodapé:** WhatsApp, e-mail e ateliê aparecem como canais ilustrativos. O rodapé mantém quatro colunas, ícones sociais ilustrativos e atalhos para a seção de contato.
-- **Formulário de demonstração:** o botão “Testar formulário” valida os campos com dados de exemplo. O formulário não transmite nem armazena informações.
-- **Skills globais:** nenhuma pasta `.agents/` ou `.claude/` é necessária no projeto publicado.
+## Estrutura do repositório
 
-## Antes de publicar para uma cliente real
+| Caminho | Conteúdo |
+| --- | --- |
+| [`index.html`](index.html) | Estrutura e conteúdo da landing page |
+| [`css/styles.css`](css/styles.css) | Tokens, componentes e estilos responsivos |
+| [`js/main.js`](js/main.js) | Navegação, galeria, formulário e animação do processo |
+| [`assets/`](assets/) | Fotografias e vídeos usados na página |
 
-- Confirmar autorização de uso das imagens e vídeos fornecidos na aula.
-- Trocar os depoimentos de exemplo por depoimentos reais autorizados.
-- Receber foto e biografia verificadas da fundadora, dados do escritório e links das redes sociais.
-- Configurar e testar um endpoint de formulário (por exemplo, um serviço de formulários com proteção antispam e política de privacidade), WhatsApp e redes sociais reais. **Sem esses dados não há como oferecer contato efetivamente funcional em uma página estática.**
-- Testar performance de vídeos em conexões móveis e adaptar o conteúdo após aprovação da cliente.
+O GitHub Pages publica a partir da raiz da branch `main`.
 
-> **Aviso:** este é um projeto fictício para estudo. Não deve ser apresentado como site oficial de um studio real. O arquivo `email-marina.txt` inclui tanto o e-mail fictício quanto o prompt utilizado na aula; ambos são material de contexto, não especificações técnicas mandatórias.
+## Créditos
+
+Adaptação e desenvolvimento front-end por **Matheus Volotão**. [GitHub](https://github.com/MatVolotao) · [LinkedIn](https://www.linkedin.com/in/matheusvolotao/)
+
+Studio Aura é uma marca fictícia criada para este projeto de portfólio. As imagens e os vídeos de interiores vieram do briefing original. O retrato da fundadora foi gerado por IA, e os depoimentos e canais de contato são ilustrativos.
